@@ -1,24 +1,19 @@
-# PEMOIN
+## Summary
 
-PEMOIN turns monocular RGB sequences into standardized geometry outputs such as intrinsics, depth, trajectory, semantics, camera height, road plane, clip-level lighting, and related diagnostics.
+PEMOIN is a computer-vision pipeline for inserting virtual pedestrians into monocular traffic-camera scenes in a geometrically plausible way. It estimates scene geometry from RGB video using depth estimation, visual odometry, semantic segmentation, road-plane reasoning, and lighting estimation, then renders and composites pedestrians into the scene with validation diagnostics.
 
+This project was developed as my master's thesis and focuses on 3D scene understanding, synthetic data generation, and perception evaluation for traffic scenarios.
 ![Unity simulation source view](Unity_Simulation.png)
 
 *Unity simulation source view used as an example input sequence for PEMOIN pipelines.*
 
 ## What It Does
 
-- Runs provider-based pipelines over frames from videos, image directories, Unity exports, CARLA exports, Virtual KITTI 2, and NuScenes.
-- Standardizes cross-stage outputs under `outputs/<run>/standard/`.
-- Keeps tool-native artifacts, caches, and diagnostics under `outputs/<run>/raw/`.
-- Supports clip-level lighting estimation through `providers.lighting`, with standardized output under `standard/lighting/`.
-- Supports optional automation for MegaSAM and PanSt3R bundle preparation.
-- Uses a maintained geometry-fusion-plus-comparison-frame post-processing path for all active profiles.
-- Current geometry fusion enforces one metric-consistency contract across corrected depth, trajectory, road support, and GT camera height. GT camera height above the road plane is treated as absolute, DPVO trajectory shape is preserved with at most one global translation scale change, estimated depth absorbs the remaining correction burden through constrained per-frame affine rectification, and runs fail fast when those signals cannot be brought into one common metric scene.
-- Supports post-alignment dense RGB point-cloud debug export before Blender scene generation, with structured GLBs under `artifacts/geometry/point_cloud/` and convenience copies at the run root as `rgb_pointcloud.glb` and `semantic_pointcloud.glb`.
-- Supports fast raster Blender pedestrian rendering with a local road-proxy shadow catcher, fixed one-pass internal render scaling, single-pass shadow extraction, traversable-ground-aware overlay composition that never lets road/sidewalk/ground semantics occlude the inserted pedestrian, conservative clip-level raw-subject exposure fine-trimming for Blender pedestrian renders, nearest-neighbor resampling of standardized traversable-ground masks into overlay space when Blender render scaling is enabled, final-overlay-space support/contact validation, temporally stabilized depth-aware occlusion for borderline small-actor frames, default-on boundary edge treatment with conservative tiny-object gating and boundary-fraction bypasses, automatic phase-derived contact-segment grounding locks that keep planted feet stable through support-foot transfers on one support surface, and optional pedestrian-only harmonisation afterward using capped local crops, bounded local color matching, offline two-pass track-level harmonisation with backfilled early visible frames, fitted track parameter curves for learned references, learned-result brightness validation with bounded temporal-safe recovery for rejected tracked frames, and default-on temporal smoothing of Harmonizer/color-match parameters.
-- Supports cross-run cache reuse for cache-aware providers and late runtime stages. Current reusable heavy stages include DiffusionLight-Turbo lighting, GeometryFusion, dense point-cloud export, Blender scene/render/composition artifacts, Harmonizer outputs, and the harmonized ground-grid video when `runtime.settings.cross_run_cache` is enabled.
-- Cross-run cache signatures for standardized `.npz` resources now use canonical member-content hashing rather than raw archive bytes, so equivalent reruns can reuse lighting/geometry/render caches even when those NPZ files are rewritten.
+- Estimates scene geometry from monocular RGB sequences.
+- Standardizes depth, trajectory, semantics, camera pose, lighting, and road-plane outputs.
+- Generates debug visualizations such as semantic masks, support-plane overlays, and point clouds.
+- Inserts animated pedestrians using Blender-based rendering and compositing.
+- Validates geometry, grounding, occlusion, lighting, and visual plausibility.
 
 Representative standardized visualizations include semantic masks and road-support diagnostics:
 
