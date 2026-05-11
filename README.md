@@ -2,6 +2,10 @@
 
 PEMOIN turns monocular RGB sequences into standardized geometry outputs such as intrinsics, depth, trajectory, semantics, camera height, road plane, clip-level lighting, and related diagnostics.
 
+![Unity simulation source view](Unity_Simulation.png)
+
+*Unity simulation source view used as an example input sequence for PEMOIN pipelines.*
+
 ## What It Does
 
 - Runs provider-based pipelines over frames from videos, image directories, Unity exports, CARLA exports, Virtual KITTI 2, and NuScenes.
@@ -15,6 +19,16 @@ PEMOIN turns monocular RGB sequences into standardized geometry outputs such as 
 - Supports fast raster Blender pedestrian rendering with a local road-proxy shadow catcher, fixed one-pass internal render scaling, single-pass shadow extraction, traversable-ground-aware overlay composition that never lets road/sidewalk/ground semantics occlude the inserted pedestrian, conservative clip-level raw-subject exposure fine-trimming for Blender pedestrian renders, nearest-neighbor resampling of standardized traversable-ground masks into overlay space when Blender render scaling is enabled, final-overlay-space support/contact validation, temporally stabilized depth-aware occlusion for borderline small-actor frames, default-on boundary edge treatment with conservative tiny-object gating and boundary-fraction bypasses, automatic phase-derived contact-segment grounding locks that keep planted feet stable through support-foot transfers on one support surface, and optional pedestrian-only harmonisation afterward using capped local crops, bounded local color matching, offline two-pass track-level harmonisation with backfilled early visible frames, fitted track parameter curves for learned references, learned-result brightness validation with bounded temporal-safe recovery for rejected tracked frames, and default-on temporal smoothing of Harmonizer/color-match parameters.
 - Supports cross-run cache reuse for cache-aware providers and late runtime stages. Current reusable heavy stages include DiffusionLight-Turbo lighting, GeometryFusion, dense point-cloud export, Blender scene/render/composition artifacts, Harmonizer outputs, and the harmonized ground-grid video when `runtime.settings.cross_run_cache` is enabled.
 - Cross-run cache signatures for standardized `.npz` resources now use canonical member-content hashing rather than raw archive bytes, so equivalent reruns can reuse lighting/geometry/render caches even when those NPZ files are rewritten.
+
+Representative standardized visualizations include semantic masks and road-support diagnostics:
+
+![Semantic segmentation visualization](semantics_000055.png)
+
+*Semantic segmentation output for a processed frame.*
+
+![Support plane overlay visualization](Support_Plane_Overlay_Frame_60.png)
+
+*Road support-plane overlay used for geometry and grounding diagnostics.*
 
 ## Start Here
 
@@ -52,6 +66,10 @@ uv pip install '.[offline,megasam,semantics,testing,dev]'
 
 Blender scene export may run inside Blender's embedded Python, but PEMOIN's full host-side dependency set still belongs in the host Python environment. Pure Blender visualization imports now tolerate a missing `imageio`, and shared resize/compositing helpers now fall back to NumPy when Blender's Python lacks `cv2` and `PIL`. Host-side PNG processing and standard frame persistence still require `imageio`.
 Current Blender raster runs also favor backend throughput for pipeline-internal artifacts: PEMOIN enables persistent render data when the Blender build exposes it, writes intermediate PNGs with fast compression settings, disables several costly EEVEE screen-space features for these internal renders by default, uses a fast subject-material policy that preserves base color/alpha/normal response while flattening lower-value secondary shading maps by default, binds dynamic subject-relative fill lights without per-frame location keyframes, skips raw-subject exposure processing entirely when the configured correction is a no-op, may render only a narrow class of disposable boundary-transition frames at a slightly reduced internal scale with milder fill-light and shadow reductions before upsampling them back to the baseline internal render shape, and may skip rasterizing frames whose grounding/visibility plan already marks the actor as off-camera while still materializing empty pedestrian/depth/shadow outputs for those frames.
+
+![Blender pedestrian scene visualization](blender_scene.png)
+
+*Blender scene visualization with inserted pedestrian geometry and scene-aligned lighting.*
 
 ## Run
 
@@ -104,6 +122,10 @@ Later pipeline stages must consume standardized resources from `outputs/<run>/st
 Late-stage Blender and harmonisation frame trees live under `outputs/<run>/artifacts/`. The run root keeps only convenience outputs such as `scene.blend`, `character_root_motion.fbx`, and the copied final video `output.mp4`.
 
 Point-cloud debug GLBs produced from aligned geometry live under `outputs/<run>/artifacts/geometry/point_cloud/` and are also copied to the run root as `rgb_pointcloud.glb` and `semantic_pointcloud.glb`.
+
+![Dense RGB point-cloud visualization](pointcloud.png)
+
+*Dense RGB point cloud exported from aligned geometry for scene inspection.*
 
 See `docs/data-contract.md` for the full resource layout.
 
