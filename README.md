@@ -3,6 +3,7 @@
 PEMOIN is a computer-vision pipeline for inserting virtual pedestrians into monocular traffic-camera scenes in a geometrically plausible way. It estimates scene geometry from RGB video using depth estimation, visual odometry, semantic segmentation, road-plane reasoning, and lighting estimation, then renders and composites pedestrians into the scene with validation diagnostics.
 
 This project was developed as my master's thesis and focuses on 3D scene understanding, synthetic data generation, and perception evaluation for traffic scenarios.
+
 ![Unity simulation source view](Unity_Simulation.png)
 
 *Unity simulation source view used as an example input sequence for PEMOIN pipelines.*
