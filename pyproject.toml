@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pemoin"
+version = "0.1.0"
+description = "PEMOIN: Modular pipeline for pedestrian video insertion."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "PEMOIN contributors" }
+]
+dependencies = [
+  "tomli>=2.0.1; python_version < '3.11'",
+  "numpy>=1.26",
+  "imageio>=2.31",
+  "matplotlib>=3.8",
+  "OpenEXR>=3.2",
+  "Pillow>=10.3",
+  "opencv-python>=4.8",
+  "tqdm>=4.66"
+]
+
+[project.optional-dependencies]
+offline = [
+  "torch>=2.2",
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "open3d>=0.18",
+  "viser>=0.2"
+]
+megasam = [
+  "lightning>=2.1",
+  "einops>=0.6",
+  "timm>=0.9",
+  "transformers>=4.33"
+]
+testing = [
+  "pytest>=7.4",
+  "pytest-mock>=3.12"
+]
+dev = [
+  "ruff>=0.5.0",
+  "black>=23.9",
+  "mypy>=1.7"
+]
+semantics = [
+  "torch>=2.2",
+  "transformers>=4.37",
+  "opencv-python>=4.8"
+]
+geometry = []
+
+[project.scripts]
+pemoin = "pemoin.cli:main"
+
+[tool.uv]
+managed = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff.lint.per-file-ignores]
+"compare_unity_pemoin_runs.py" = ["E402", "E702", "F841"]
+"src/pemoin/scripts/blender_trajectory_scene.py" = ["E402"]
+"src/pemoin/visualization/blender_scene/pipeline.py" = ["E402"]

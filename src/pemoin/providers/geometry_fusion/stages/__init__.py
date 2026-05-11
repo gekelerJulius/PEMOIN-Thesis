@@ -1,0 +1,1 @@
+"""Geometry fusion processing stages."""

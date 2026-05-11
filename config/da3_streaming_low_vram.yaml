@@ -1,0 +1,14 @@
+inherit_from: ./configs/base_config.yaml
+
+Model:
+  chunk_size: 4
+  overlap: 2
+  loop_chunk_size: 4
+  loop_enable: false
+  align_lib: 'torch'
+  ref_view_strategy: 'middle'
+  ref_view_strategy_loop: 'middle'
+  process_res: 360
+  process_res_method: 'upper_bound_resize'
+  mixed_precision: true
+  precision: 'fp16'

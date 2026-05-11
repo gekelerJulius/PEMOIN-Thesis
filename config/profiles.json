@@ -1,0 +1,2020 @@
+{
+  "profiles": {
+    "unity_gt": {
+      "working_resolution": 720,
+      "unity_import": {
+        "enabled": true,
+        "source": "/home/juli/.config/unity3d/DefaultCompany/DT/solo_39",
+        "sampling_fps": 10.0,
+        "prune_unused": true,
+        "write_videos": true
+      },
+      "runtime": {
+        "state_window": 24,
+        "degradation_policy": "OfflineDegradationPolicy",
+        "settings": {
+          "blender_scene": {
+            "enabled": true,
+            "pedestrian_placement": {
+              "mode": "unity_world_horizontal",
+              "position_x_m": 3.0,
+              "position_z_m": 4.0,
+              "heading_yaw_deg": 90.0
+            },
+            "pedestrian_heading_deg": 0.0,
+            "cube_size": 0.1,
+            "collection_name": "TrajectoryDebug",
+            "road_gap": 0.1,
+            "global_plane_range_m": 15.0,
+            "global_plane_min_range_m": 3.0,
+            "global_plane_frame_window": 3,
+            "global_plane_max_points_per_frame": 4000,
+            "global_plane_confidence_threshold": 0.3,
+            "global_plane_trim_ratio": 0.2,
+            "local_support_radius_m": 2.5,
+            "local_support_frame_window": 3,
+            "local_support_min_points": 8,
+            "local_support_plane_size_m": 0.6,
+            "local_support_confidence_threshold": 0.0,
+            "local_support_max_radius_m": 7.5,
+            "local_support_radius_step_m": 0.75,
+            "local_support_snap_to_nearest_road": true,
+            "local_support_snap_radius_m": 1.0,
+            "local_support_temporal_hold_frames": 10,
+            "local_support_temporal_hold_seconds": 5.0,
+            "local_support_snap_max_vertical_delta_m": 0.2,
+            "local_support_snap_max_radius_ratio": 0.5,
+            "local_support_prefilter_vertical_window_m": 0.75,
+            "foot_contact_mode": "mixamo_phase",
+            "foot_contact_phase_offset": 0.0,
+            "foot_contact_left_stance_phase_ranges": [
+              [
+                0.28,
+                0.44
+              ]
+            ],
+            "foot_contact_right_stance_phase_ranges": [
+              [
+                0.79,
+                0.94
+              ]
+            ],
+            "foot_contact_gait_cycle_frames": null,
+            "foot_contact_auto_calibrate_phase_ranges": true,
+            "foot_contact_plane_mode": "project",
+            "foot_contact_min_plane_confidence_for_projection": 0.35,
+            "foot_contact_max_plane_dist_m": 0.08,
+            "foot_contact_max_speed_mps": 2.5,
+            "foot_contact_min_stance_frames": 2,
+            "foot_contact_min_swing_frames": 1,
+            "occlusion": {
+              "depth_source": "z_pass",
+              "default_front_margin_m": 0.005,
+              "relative_margin": 0.001,
+              "contact_plane_band_m": 0.06,
+              "contact_patch_radius_m": 0.6,
+              "contact_coplanar_tolerance_m": 0.1
+            },
+            "render": {
+              "resolution_scale": 1.5,
+              "raw_subject_exposure": {
+                "max_gain": 3.5
+              }
+            },
+            "lighting": {
+              "wrap_subject_fill": {
+                "global_strength_scale": 2.85,
+                "wrap_key_role_scale": 0.08,
+                "counter_wrap_role_scale": 0.07,
+                "sky_fill_role_scale": 0.04,
+                "raw_exposure_trim": 1.1
+              }
+            }
+          },
+          "validation_policy": {
+            "enabled": true,
+            "reference_sampling_fps": 10.0,
+            "minimum_sampling_fps": 1.0,
+            "threshold_curve": "sqrt_inverse_ratio",
+            "max_threshold_scale": 2.0,
+            "min_count_scale": 0.5,
+            "hard_fail_margin": 1.35,
+            "continue_on_soft_failure": true,
+            "emit_loud_warnings": true
+          },
+          "prefetch_frames": 48,
+          "geometry_validation": {
+            "enabled": true,
+            "max_frames": 300,
+            "max_depth_pixels": 5000,
+            "min_positive_depth_ratio": 0.97,
+            "min_front_ratio": 0.98,
+            "reprojection_error_px": 2.0,
+            "min_reprojection_ratio": 0.95,
+            "motion_min_distance_m": 0.02,
+            "min_view_motion_alignment": 0.2,
+            "min_view_motion_ratio": 0.6,
+            "rotation_orthonormal_tol": 0.001,
+            "det_tolerance": 0.05,
+            "last_row_tolerance": 0.001,
+            "camera_height_tolerance_m": 0.25,
+            "max_pose_jump_m": 50.0
+          },
+          "video_export": {
+            "enabled": true,
+            "codec": "mp4v",
+            "min_frames": 2
+          },
+          "depth_stabilization": {
+            "enabled": false,
+            "sigma_inv_depth": 0.04,
+            "use_dynamic_masks": true,
+            "device": "cuda"
+          },
+          "harmonisation": {
+            "enabled": true,
+            "conda_env": "harmonizer",
+            "pretrained_path": "tools/Harmonizer/pretrained/harmonizer.pth",
+            "overlay_dir": "artifacts/blender/overlayed_frames",
+            "occlusion_mask_dir": "artifacts/blender/occlusion_masks",
+            "output_dir": "artifacts/harmonisation/harmonized_overlays",
+            "mask_threshold": 0.05,
+            "min_crop_size_ratio": 1.0,
+            "max_frame_coverage_ratio": 1.0,
+            "containment_margin_px": 8,
+            "reject_when_actor_exceeds_crop": true,
+            "oversized_actor_behavior": "full_mask_affine_or_copy",
+            "full_frame_affine_min_mask_pixels": 512,
+            "eligibility": {
+              "min_visible_mask_pixels_for_model": 48,
+              "min_visible_bbox_short_side_px_for_model": 6,
+              "max_crop_coverage_ratio_for_model": 0.7,
+              "max_crop_coverage_mask_pixels_threshold": 128
+            },
+            "color_matching": {
+              "enabled": true,
+              "color_space": "lab",
+              "ring_inner_px": 10,
+              "ring_outer_px": 40,
+              "exclude_top_band": true,
+              "top_band_reference": "mask_top",
+              "top_band_px": 12,
+              "use_semantics_for_sky_filter": true,
+              "outlier_rejection": "robust_percentile",
+              "luminance_match": "mean_std",
+              "luminance_strength": 0.6,
+              "chroma_match": "mean_only",
+              "chroma_strength": 0.3,
+              "min_ring_pixels": 256,
+              "fallback_behavior": "skip_and_continue",
+              "write_diagnostics": true
+            },
+            "correction_clamps": {
+              "min_foreground_pixels_for_luminance_scale": 64,
+              "min_foreground_luminance_std_for_scale": 2.0,
+              "luminance_delta_clamp_small_mask": 18.0,
+              "luminance_delta_clamp_model": 28.0,
+              "luminance_std_ratio_clamp": [
+                0.75,
+                1.25
+              ],
+              "chroma_shift_clamp": 6.0
+            },
+            "temporal_smoothing": {
+              "enabled": true,
+              "mode": "parameter_ema",
+              "appearance_alpha": 0.85,
+              "tonal_alpha": 0.92,
+              "color_match_alpha": 0.85,
+              "warmup_mode": "seed_from_first_valid",
+              "reset_on_empty_mask": true,
+              "reset_on_copy_through": true,
+              "reset_on_harmonizer_failure": true,
+              "reset_on_crop_iou_below": 0.25,
+              "reset_on_mask_area_ratio_outside": [
+                0.5,
+                2.0
+              ],
+              "reset_on_centroid_jump_fraction": 0.25,
+              "fallback_mode": "affine_rgb_gain_bias",
+              "write_diagnostics": true
+            },
+            "adaptive": {
+              "enabled": true,
+              "profile_bias": 0.2,
+              "no_local_support_color_match_strength_cap": 0.28,
+              "no_local_support_harmonizer_strength_cap": 0.4,
+              "backfilled_parameter_strength_scale": 0.3,
+              "interpolated_parameter_strength_scale": 0.55,
+              "synthetic_contrast_preservation": 0.95,
+              "synthetic_saturation_preservation": 0.9
+            }
+          },
+          "geometry_consistency_validation": {
+            "enabled": true,
+            "pixel_stride": 8,
+            "min_overlap_points": 200,
+            "min_static_overlap_points": 200,
+            "exclude_dynamic_pixels": true,
+            "dynamic_mask_source": "auto",
+            "reprojection_error_px": 2.0,
+            "max_reprojection_rmse_px": 6.0,
+            "max_reprojection_p90_px": 4.0,
+            "max_reprojection_p95_px": 8.0,
+            "reprojection_catastrophic_mode": "robust_primary",
+            "min_inlier_ratio": 0.7,
+            "max_depth_scale_drift": 0.2,
+            "max_consecutive_catastrophic": 4,
+            "max_skipped_frames": 16,
+            "save_debug_artifacts_on_failure": true
+          },
+          "comparison_frame": {
+            "enabled": true,
+            "mode": "gt",
+            "ground_source": "road_plane",
+            "fail_if_missing_ground": true,
+            "min_ground_samples": 5,
+            "max_abs_ground_shift_m": 5.0,
+            "min_motion_steps": 3,
+            "min_total_xy_travel_m": 0.25,
+            "min_direction_concentration": 0.2,
+            "gt_max_height_rmse_m": 0.35,
+            "gt_max_height_abs_err_m": 0.75,
+            "gt_max_ground_drift_range_m": 0.5,
+            "estimated_min_median_camera_height_m": 0.5
+          }
+        }
+      },
+      "providers": {
+        "intrinsics": {
+          "tool": "UnityGTIntrinsicsProvider",
+          "settings": {}
+        },
+        "depth": {
+          "tool": "UnityGTDepthProvider",
+          "settings": {}
+        },
+        "camera_height": {
+          "tool": "CameraHeightProvider",
+          "settings": {
+            "height": 1.4
+          }
+        },
+        "trajectory": {
+          "tool": "UnityGTTrajectoryProvider",
+          "settings": {}
+        },
+        "semantics": {
+          "tool": "UnityGTSemanticsProvider",
+          "settings": {}
+        },
+        "point_cloud_3d": {
+          "tool": "DensePointCloud3DProvider",
+          "settings": {
+            "pixel_stride": 2,
+            "voxel_size_m": 0.05,
+            "min_depth_m": 0.5,
+            "max_depth_m": 80.0,
+            "min_observations": 2,
+            "min_confidence": 0.3,
+            "min_total_points": 10000,
+            "max_points": 5000000,
+            "export_glb": true,
+            "glb_max_points": 250000,
+            "seed": 42,
+            "max_position_std_m": 0.2,
+            "max_depth_std_m": 1.5,
+            "min_view_diversity": 0.0
+          }
+        },
+        "geometry_fusion": {
+          "tool": "GeometryFusionProvider",
+          "settings": {
+            "road_conf_thresh": 0.6,
+            "roi_bottom_frac": 0.45,
+            "z_max_m": 30.0,
+            "ransac_iters": 2000,
+            "inlier_thresh_m": 0.06,
+            "irls_iters": 10,
+            "huber_delta_plane_m": 0.08,
+            "affine_mode": "scale_only",
+            "lambda_s": 5.0,
+            "lambda_b": 1.0,
+            "factor_graph_enabled": true,
+            "fg_env_name": "gtsam",
+            "fg_window_size": 21,
+            "quadratic_enabled": true
+          }
+        },
+        "lighting": {
+          "tool": "UnityGTLightingProvider",
+          "settings": {
+            "require_reflection_faces": true,
+            "require_frame_lighting": false,
+            "force_sun_shadows": true,
+            "sun_strength_scale": 2.5e-5,
+            "ambient_strength_scale": 0.0025,
+            "envmap_resolution": [
+              256,
+              512
+            ]
+          }
+        }
+      },
+      "mixamo": {
+        "character_fbx_path": "assets/mixamo/characters/Ch42_nonPBR.fbx",
+        "animation_fbx_path": "assets/mixamo/animations/moving/walk.fbx",
+        "debug": true
+      }
+    },
+    "unity_dpvo": {
+      "working_resolution": 1280,
+      "unity_import": {
+        "enabled": true,
+        "source": "/home/juli/.config/unity3d/DefaultCompany/DT/solo_1",
+        "sampling_fps": 10.0,
+        "prune_unused": true,
+        "write_videos": true,
+        "resources": {
+          "frames": true,
+          "depth": false,
+          "semantics": true
+        }
+      },
+      "runtime": {
+        "state_window": 24,
+        "degradation_policy": "OfflineDegradationPolicy",
+        "settings": {
+          "blender_scene": {
+            "enabled": true,
+            "pedestrian_placement": {
+              "mode": "unity_world_horizontal",
+              "position_x_m": 0.9,
+              "position_z_m": 16.0,
+              "heading_yaw_deg": 0.0
+            },
+            "pedestrian_heading_deg": 130.0,
+            "cube_size": 0.1,
+            "collection_name": "TrajectoryDebug",
+            "road_gap": 0.1,
+            "global_plane_range_m": 15.0,
+            "global_plane_min_range_m": 3.0,
+            "global_plane_frame_window": 3,
+            "global_plane_max_points_per_frame": 4000,
+            "global_plane_confidence_threshold": 0.3,
+            "global_plane_trim_ratio": 0.2,
+            "local_support_radius_m": 2.5,
+            "local_support_frame_window": 3,
+            "local_support_min_points": 8,
+            "local_support_plane_size_m": 0.6,
+            "local_support_confidence_threshold": 0.0,
+            "local_support_max_radius_m": 7.5,
+            "local_support_radius_step_m": 0.75,
+            "local_support_snap_to_nearest_road": true,
+            "local_support_snap_radius_m": 1.0,
+            "local_support_temporal_hold_frames": 10,
+            "local_support_temporal_hold_seconds": 5.0,
+            "local_support_snap_max_vertical_delta_m": 0.2,
+            "local_support_snap_max_radius_ratio": 0.5,
+            "local_support_prefilter_vertical_window_m": 0.75,
+            "foot_contact_mode": "mixamo_phase",
+            "foot_contact_phase_offset": 0.0,
+            "foot_contact_left_stance_phase_ranges": [
+              [
+                0.28,
+                0.44
+              ]
+            ],
+            "foot_contact_right_stance_phase_ranges": [
+              [
+                0.79,
+                0.94
+              ]
+            ],
+            "foot_contact_gait_cycle_frames": null,
+            "foot_contact_auto_calibrate_phase_ranges": true,
+            "foot_contact_plane_mode": "project",
+            "foot_contact_min_plane_confidence_for_projection": 0.35,
+            "foot_contact_max_plane_dist_m": 0.08,
+            "foot_contact_max_speed_mps": 2.5,
+            "foot_contact_min_stance_frames": 2,
+            "foot_contact_min_swing_frames": 1,
+            "occlusion": {
+              "depth_source": "z_pass",
+              "default_front_margin_m": 0.005,
+              "relative_margin": 0.001,
+              "contact_plane_band_m": 0.06,
+              "contact_patch_radius_m": 0.6,
+              "contact_coplanar_tolerance_m": 0.1
+            },
+            "render": {
+              "resolution_scale": 3.0,
+              "raw_subject_exposure": {
+                "max_gain": 3.5
+              }
+            },
+            "lighting": {
+              "wrap_subject_fill": {
+                "global_strength_scale": 2.85,
+                "wrap_key_role_scale": 0.08,
+                "counter_wrap_role_scale": 0.07,
+                "sky_fill_role_scale": 0.04,
+                "raw_exposure_trim": 1.1
+              }
+            }
+          },
+          "validation_policy": {
+            "enabled": true,
+            "reference_sampling_fps": 10.0,
+            "minimum_sampling_fps": 1.0,
+            "threshold_curve": "sqrt_inverse_ratio",
+            "max_threshold_scale": 2.0,
+            "min_count_scale": 0.5,
+            "hard_fail_margin": 1.35,
+            "continue_on_soft_failure": true,
+            "emit_loud_warnings": true
+          },
+          "prefetch_frames": 48,
+          "geometry_validation": {
+            "enabled": true,
+            "max_frames": 300,
+            "max_depth_pixels": 5000,
+            "min_positive_depth_ratio": 0.97,
+            "min_front_ratio": 0.98,
+            "reprojection_error_px": 2.0,
+            "min_reprojection_ratio": 0.95,
+            "motion_min_distance_m": 0.02,
+            "min_view_motion_alignment": 0.2,
+            "min_view_motion_ratio": 0.6,
+            "rotation_orthonormal_tol": 0.001,
+            "det_tolerance": 0.05,
+            "last_row_tolerance": 0.001,
+            "camera_height_tolerance_m": 0.25,
+            "max_pose_jump_m": 50.0
+          },
+          "video_export": {
+            "enabled": true,
+            "codec": "mp4v",
+            "min_frames": 2
+          },
+          "depth_stabilization": {
+            "enabled": false,
+            "sigma_inv_depth": 0.04,
+            "use_dynamic_masks": true,
+            "device": "cuda"
+          },
+          "harmonisation": {
+            "enabled": true,
+            "conda_env": "harmonizer",
+            "pretrained_path": "tools/Harmonizer/pretrained/harmonizer.pth",
+            "overlay_dir": "artifacts/blender/overlayed_frames",
+            "occlusion_mask_dir": "artifacts/blender/occlusion_masks",
+            "output_dir": "artifacts/harmonisation/harmonized_overlays",
+            "mask_threshold": 0.05,
+            "min_crop_size_ratio": 1.0,
+            "max_frame_coverage_ratio": 1.0,
+            "containment_margin_px": 8,
+            "reject_when_actor_exceeds_crop": true,
+            "oversized_actor_behavior": "full_mask_affine_or_copy",
+            "full_frame_affine_min_mask_pixels": 512,
+            "eligibility": {
+              "min_visible_mask_pixels_for_model": 48,
+              "min_visible_bbox_short_side_px_for_model": 6,
+              "max_crop_coverage_ratio_for_model": 0.7,
+              "max_crop_coverage_mask_pixels_threshold": 128
+            },
+            "color_matching": {
+              "enabled": true,
+              "color_space": "lab",
+              "ring_inner_px": 10,
+              "ring_outer_px": 40,
+              "exclude_top_band": true,
+              "top_band_reference": "mask_top",
+              "top_band_px": 12,
+              "use_semantics_for_sky_filter": true,
+              "outlier_rejection": "robust_percentile",
+              "luminance_match": "mean_std",
+              "luminance_strength": 0.6,
+              "chroma_match": "mean_only",
+              "chroma_strength": 0.3,
+              "min_ring_pixels": 256,
+              "fallback_behavior": "skip_and_continue",
+              "write_diagnostics": true
+            },
+            "correction_clamps": {
+              "min_foreground_pixels_for_luminance_scale": 64,
+              "min_foreground_luminance_std_for_scale": 2.0,
+              "luminance_delta_clamp_small_mask": 18.0,
+              "luminance_delta_clamp_model": 28.0,
+              "luminance_std_ratio_clamp": [
+                0.75,
+                1.25
+              ],
+              "chroma_shift_clamp": 6.0
+            },
+            "temporal_smoothing": {
+              "enabled": true,
+              "mode": "parameter_ema",
+              "appearance_alpha": 0.85,
+              "tonal_alpha": 0.92,
+              "color_match_alpha": 0.85,
+              "warmup_mode": "seed_from_first_valid",
+              "reset_on_empty_mask": true,
+              "reset_on_copy_through": true,
+              "reset_on_harmonizer_failure": true,
+              "reset_on_crop_iou_below": 0.25,
+              "reset_on_mask_area_ratio_outside": [
+                0.5,
+                2.0
+              ],
+              "reset_on_centroid_jump_fraction": 0.25,
+              "fallback_mode": "affine_rgb_gain_bias",
+              "write_diagnostics": true
+            }
+          },
+          "geometry_consistency_validation": {
+            "enabled": true,
+            "pixel_stride": 8,
+            "min_overlap_points": 200,
+            "min_static_overlap_points": 200,
+            "exclude_dynamic_pixels": true,
+            "dynamic_mask_source": "auto",
+            "reprojection_error_px": 2.0,
+            "max_reprojection_rmse_px": 6.0,
+            "max_reprojection_p90_px": 4.0,
+            "max_reprojection_p95_px": 8.0,
+            "reprojection_catastrophic_mode": "robust_primary",
+            "min_inlier_ratio": 0.7,
+            "max_depth_scale_drift": 0.2,
+            "max_consecutive_catastrophic": 4,
+            "max_skipped_frames": 16,
+            "save_debug_artifacts_on_failure": true
+          },
+          "comparison_frame": {
+            "enabled": true,
+            "mode": "estimated",
+            "up_direction_source": "gravity_prior",
+            "gravity_prior": {
+              "provider": "unity_gt",
+              "fail_if_unavailable": true,
+              "min_valid_frames": 5,
+              "max_outlier_angle_deg": 20.0
+            },
+            "ground_source": "road_plane",
+            "fail_if_missing_ground": true,
+            "min_ground_samples": 5,
+            "max_abs_ground_shift_m": 5.0,
+            "min_motion_steps": 3,
+            "min_total_xy_travel_m": 0.25,
+            "min_direction_concentration": 0.2,
+            "gt_max_height_rmse_m": 0.35,
+            "gt_max_height_abs_err_m": 0.75,
+            "gt_max_ground_drift_range_m": 0.5,
+            "estimated_min_median_camera_height_m": 0.5
+          }
+        }
+      },
+      "providers": {
+        "intrinsics": {
+          "tool": "UnityGTIntrinsicsProvider",
+          "settings": {}
+        },
+        "depth": {
+          "tool": "UniDepthDepthProvider",
+          "settings": {
+            "adapter": {
+              "model_name": "lpiccinelli/unidepth-v2-vitl14",
+              "mamba_env": "unidepth-cu121",
+              "precision_mode": "amp_fp16",
+              "batch_size": 1,
+              "save_confidence": true,
+              "channels_last": true,
+              "use_gt_intrinsics": true
+            }
+          }
+        },
+        "camera_height": {
+          "tool": "CameraHeightProvider",
+          "settings": {
+            "height": 1.3
+          }
+        },
+        "trajectory": {
+          "tool": "DPVOTrajectoryProvider",
+          "settings": {
+            "adapter": {
+              "stride": 1,
+              "precision_mode": "amp_fp16",
+              "allocator_mode": "native",
+              "memory_preset": "low_vram"
+            }
+          }
+        },
+        "semantics": {
+          "tool": "UnityGTSemanticsProvider",
+          "settings": {}
+        },
+        "point_cloud_3d": {
+          "tool": "DensePointCloud3DProvider",
+          "settings": {
+            "pixel_stride": 2,
+            "voxel_size_m": 0.05,
+            "min_depth_m": 0.5,
+            "max_depth_m": 80.0,
+            "min_observations": 2,
+            "min_confidence": 0.3,
+            "min_total_points": 10000,
+            "max_points": 5000000,
+            "export_glb": true,
+            "glb_max_points": 250000,
+            "seed": 42,
+            "max_position_std_m": 0.2,
+            "max_depth_std_m": 1.5,
+            "min_view_diversity": 0.0
+          }
+        },
+        "geometry_fusion": {
+          "tool": "GeometryFusionProvider",
+          "settings": {
+            "road_conf_thresh": 0.6,
+            "roi_bottom_frac": 0.45,
+            "z_max_m": 30.0,
+            "ransac_iters": 2000,
+            "inlier_thresh_m": 0.06,
+            "irls_iters": 10,
+            "huber_delta_plane_m": 0.08,
+            "affine_mode": "scale_only",
+            "lambda_s": 5.0,
+            "lambda_b": 1.0,
+            "factor_graph_enabled": true,
+            "fg_env_name": "gtsam",
+            "fg_window_size": 21,
+            "quadratic_enabled": true
+          }
+        },
+        "lighting": {
+          "tool": "UnityGTLightingProvider",
+          "settings": {
+            "require_reflection_faces": true,
+            "require_frame_lighting": false,
+            "force_sun_shadows": true,
+            "sun_strength_scale": 2.5e-5,
+            "ambient_strength_scale": 0.0025,
+            "envmap_resolution": [
+              256,
+              512
+            ]
+          }
+        }
+      },
+      "mixamo": {
+        "character_fbx_path": "assets/mixamo/characters/Ch42_nonPBR.fbx",
+        "animation_fbx_path": "assets/mixamo/animations/idle/waving.fbx",
+        "debug": true
+      }
+    },
+    "carla_dpvo": {
+      "working_resolution": 720,
+      "frame_provider": {
+        "tool": "CarlaFrameProvider",
+        "settings": {
+          "path": "/home/juli/PycharmProjects/PEMOIN/carla_exports/20260209_180917_Town01_fps10_1280x720_fov90_sem1_inst1_n50",
+          "sampling_fps": 10.0
+        }
+      },
+      "runtime": {
+        "state_window": 24,
+        "degradation_policy": "OfflineDegradationPolicy",
+        "settings": {
+          "blender_scene": {
+            "enabled": true,
+            "pedestrian_trajectory_t": 0.65,
+            "pedestrian_forward_offset_m": 0.0,
+            "pedestrian_left_offset_m": -2.0,
+            "pedestrian_up_offset_m": 0.0,
+            "pedestrian_heading_deg": 90.0,
+            "cube_size": 0.1,
+            "collection_name": "TrajectoryDebug",
+            "road_gap": 0.1,
+            "global_plane_range_m": 15.0,
+            "global_plane_min_range_m": 3.0,
+            "global_plane_frame_window": 3,
+            "global_plane_max_points_per_frame": 4000,
+            "global_plane_confidence_threshold": 0.3,
+            "global_plane_trim_ratio": 0.2,
+            "local_support_radius_m": 2.5,
+            "local_support_frame_window": 3,
+            "local_support_min_points": 8,
+            "local_support_plane_size_m": 0.6,
+            "local_support_confidence_threshold": 0.0,
+            "local_support_max_radius_m": 7.5,
+            "local_support_radius_step_m": 0.75,
+            "local_support_snap_to_nearest_road": true,
+            "local_support_snap_radius_m": 1.0,
+            "local_support_temporal_hold_frames": 10,
+            "local_support_temporal_hold_seconds": 5.0,
+            "local_support_snap_max_vertical_delta_m": 0.2,
+            "local_support_snap_max_radius_ratio": 0.5,
+            "local_support_prefilter_vertical_window_m": 0.75,
+            "foot_contact_mode": "mixamo_phase",
+            "foot_contact_phase_offset": 0.0,
+            "foot_contact_left_stance_phase_ranges": [
+              [
+                0.28,
+                0.44
+              ]
+            ],
+            "foot_contact_right_stance_phase_ranges": [
+              [
+                0.79,
+                0.94
+              ]
+            ],
+            "foot_contact_gait_cycle_frames": null,
+            "foot_contact_auto_calibrate_phase_ranges": true,
+            "foot_contact_plane_mode": "project",
+            "foot_contact_min_plane_confidence_for_projection": 0.35,
+            "foot_contact_max_plane_dist_m": 0.08,
+            "foot_contact_max_speed_mps": 2.5,
+            "foot_contact_min_stance_frames": 2,
+            "foot_contact_min_swing_frames": 1,
+            "occlusion": {
+              "depth_source": "z_pass",
+              "default_front_margin_m": 0.005,
+              "relative_margin": 0.001,
+              "contact_plane_band_m": 0.06,
+              "contact_patch_radius_m": 0.6,
+              "contact_coplanar_tolerance_m": 0.1
+            },
+            "render": {
+              "resolution_scale": 1.5,
+              "raw_subject_exposure": {
+                "max_gain": 3.5
+              }
+            },
+            "lighting": {
+              "wrap_subject_fill": {
+                "global_strength_scale": 2.85,
+                "wrap_key_role_scale": 0.08,
+                "counter_wrap_role_scale": 0.07,
+                "sky_fill_role_scale": 0.04,
+                "raw_exposure_trim": 1.1
+              }
+            }
+          },
+          "validation_policy": {
+            "enabled": true,
+            "reference_sampling_fps": 10.0,
+            "minimum_sampling_fps": 1.0,
+            "threshold_curve": "sqrt_inverse_ratio",
+            "max_threshold_scale": 2.0,
+            "min_count_scale": 0.5,
+            "hard_fail_margin": 1.35,
+            "continue_on_soft_failure": true,
+            "emit_loud_warnings": true
+          },
+          "prefetch_frames": 48,
+          "geometry_validation": {
+            "enabled": true,
+            "max_frames": 300,
+            "max_depth_pixels": 5000,
+            "min_positive_depth_ratio": 0.97,
+            "min_front_ratio": 0.98,
+            "reprojection_error_px": 2.0,
+            "min_reprojection_ratio": 0.95,
+            "motion_min_distance_m": 0.02,
+            "min_view_motion_alignment": 0.2,
+            "min_view_motion_ratio": 0.6,
+            "rotation_orthonormal_tol": 0.001,
+            "det_tolerance": 0.05,
+            "last_row_tolerance": 0.001,
+            "camera_height_tolerance_m": 0.25,
+            "max_pose_jump_m": 50.0
+          },
+          "video_export": {
+            "enabled": true,
+            "codec": "mp4v",
+            "min_frames": 2
+          },
+          "depth_stabilization": {
+            "enabled": false,
+            "sigma_inv_depth": 0.04,
+            "use_dynamic_masks": true,
+            "device": "cuda"
+          },
+          "harmonisation": {
+            "enabled": true,
+            "conda_env": "harmonizer",
+            "pretrained_path": "tools/Harmonizer/pretrained/harmonizer.pth",
+            "overlay_dir": "artifacts/blender/overlayed_frames",
+            "occlusion_mask_dir": "artifacts/blender/occlusion_masks",
+            "output_dir": "artifacts/harmonisation/harmonized_overlays",
+            "mask_threshold": 0.05,
+            "min_crop_size_ratio": 1.0,
+            "max_frame_coverage_ratio": 1.0,
+            "containment_margin_px": 8,
+            "reject_when_actor_exceeds_crop": true,
+            "oversized_actor_behavior": "full_mask_affine_or_copy",
+            "full_frame_affine_min_mask_pixels": 512,
+            "eligibility": {
+              "min_visible_mask_pixels_for_model": 48,
+              "min_visible_bbox_short_side_px_for_model": 6,
+              "max_crop_coverage_ratio_for_model": 0.7,
+              "max_crop_coverage_mask_pixels_threshold": 128
+            },
+            "color_matching": {
+              "enabled": true,
+              "color_space": "lab",
+              "ring_inner_px": 10,
+              "ring_outer_px": 40,
+              "exclude_top_band": true,
+              "top_band_reference": "mask_top",
+              "top_band_px": 12,
+              "use_semantics_for_sky_filter": true,
+              "outlier_rejection": "robust_percentile",
+              "luminance_match": "mean_std",
+              "luminance_strength": 0.6,
+              "chroma_match": "mean_only",
+              "chroma_strength": 0.3,
+              "min_ring_pixels": 256,
+              "fallback_behavior": "skip_and_continue",
+              "write_diagnostics": true
+            },
+            "correction_clamps": {
+              "min_foreground_pixels_for_luminance_scale": 64,
+              "min_foreground_luminance_std_for_scale": 2.0,
+              "luminance_delta_clamp_small_mask": 18.0,
+              "luminance_delta_clamp_model": 28.0,
+              "luminance_std_ratio_clamp": [
+                0.75,
+                1.25
+              ],
+              "chroma_shift_clamp": 6.0
+            },
+            "temporal_smoothing": {
+              "enabled": true,
+              "mode": "parameter_ema",
+              "appearance_alpha": 0.85,
+              "tonal_alpha": 0.92,
+              "color_match_alpha": 0.85,
+              "warmup_mode": "seed_from_first_valid",
+              "reset_on_empty_mask": true,
+              "reset_on_copy_through": true,
+              "reset_on_harmonizer_failure": true,
+              "reset_on_crop_iou_below": 0.25,
+              "reset_on_mask_area_ratio_outside": [
+                0.5,
+                2.0
+              ],
+              "reset_on_centroid_jump_fraction": 0.25,
+              "fallback_mode": "affine_rgb_gain_bias",
+              "write_diagnostics": true
+            }
+          },
+          "geometry_consistency_validation": {
+            "enabled": true,
+            "pixel_stride": 8,
+            "min_overlap_points": 200,
+            "min_static_overlap_points": 200,
+            "exclude_dynamic_pixels": true,
+            "dynamic_mask_source": "auto",
+            "reprojection_error_px": 2.0,
+            "max_reprojection_rmse_px": 6.0,
+            "max_reprojection_p90_px": 4.0,
+            "max_reprojection_p95_px": 8.0,
+            "reprojection_catastrophic_mode": "robust_primary",
+            "min_inlier_ratio": 0.7,
+            "max_depth_scale_drift": 0.2,
+            "max_consecutive_catastrophic": 4,
+            "max_skipped_frames": 16,
+            "save_debug_artifacts_on_failure": true
+          },
+          "comparison_frame": {
+            "enabled": true,
+            "mode": "estimated",
+            "ground_source": "road_plane",
+            "fail_if_missing_ground": true,
+            "min_ground_samples": 5,
+            "max_abs_ground_shift_m": 5.0,
+            "min_motion_steps": 3,
+            "min_total_xy_travel_m": 0.25,
+            "min_direction_concentration": 0.2,
+            "gt_max_height_rmse_m": 0.35,
+            "gt_max_height_abs_err_m": 0.75,
+            "gt_max_ground_drift_range_m": 0.5,
+            "estimated_min_median_camera_height_m": 0.5
+          }
+        }
+      },
+      "providers": {
+        "intrinsics": {
+          "tool": "CarlaIntrinsicsProvider",
+          "settings": {}
+        },
+        "depth": {
+          "tool": "UniDepthDepthProvider",
+          "settings": {
+            "adapter": {
+              "model_name": "lpiccinelli/unidepth-v2-vitl14",
+              "mamba_env": "unidepth-cu121",
+              "precision_mode": "amp_fp16",
+              "batch_size": 1,
+              "save_confidence": true,
+              "channels_last": true,
+              "use_gt_intrinsics": true
+            }
+          }
+        },
+        "camera_height": {
+          "tool": "CameraHeightProvider",
+          "settings": {
+            "height": 1.6
+          }
+        },
+        "trajectory": {
+          "tool": "DPVOTrajectoryProvider",
+          "settings": {
+            "adapter": {
+              "stride": 1,
+              "precision_mode": "amp_fp16",
+              "allocator_mode": "native",
+              "memory_preset": "low_vram"
+            }
+          }
+        },
+        "semantics": {
+          "tool": "CarlaSemanticsProvider",
+          "settings": {
+            "label_map_path": "/home/juli/Documents/Master_Thesis/Docpluscode/PEMOIN/carla_scripts/carla_label_map_dump.json"
+          }
+        },
+        "point_cloud_3d": {
+          "tool": "DensePointCloud3DProvider",
+          "settings": {
+            "pixel_stride": 2,
+            "voxel_size_m": 0.05,
+            "min_depth_m": 0.5,
+            "max_depth_m": 80.0,
+            "min_observations": 2,
+            "min_confidence": 0.3,
+            "min_total_points": 10000,
+            "max_points": 5000000,
+            "export_glb": true,
+            "glb_max_points": 250000,
+            "seed": 42,
+            "max_position_std_m": 0.2,
+            "max_depth_std_m": 1.5,
+            "min_view_diversity": 0.0
+          }
+        },
+        "geometry_fusion": {
+          "tool": "GeometryFusionProvider",
+          "settings": {
+            "road_conf_thresh": 0.6,
+            "roi_bottom_frac": 0.45,
+            "z_max_m": 30.0,
+            "ransac_iters": 2000,
+            "inlier_thresh_m": 0.06,
+            "irls_iters": 10,
+            "huber_delta_plane_m": 0.08,
+            "affine_mode": "scale_only",
+            "lambda_s": 5.0,
+            "lambda_b": 1.0,
+            "factor_graph_enabled": true,
+            "fg_env_name": "gtsam",
+            "fg_window_size": 21,
+            "quadratic_enabled": true
+          }
+        },
+        "lighting": {
+          "tool": "DiffusionLightTurboLightingProvider",
+          "settings": {
+            "repo_root": "tools/DiffusionLight-Turbo",
+            "conda_env": "diffusionlight-turbo",
+            "input_size": 1024,
+            "num_keyframes": 3,
+            "algorithm": "normal",
+            "offload": true,
+            "no_controlnet": true,
+            "outlier_angle_deg": 30.0,
+            "sun_sigma_deg": 6.0,
+            "diffuse_demote_enabled": true,
+            "diffuse_demote_aggressiveness": "aggressive",
+            "max_direct_to_fill_ratio_for_diffuse": 2.0,
+            "fill_heavy_min_fill_count": 2,
+            "fill_heavy_direct_scale": 0.2,
+            "fill_heavy_dark_side_target_ratio": 0.38,
+            "fill_heavy_transport_gain": 1.35,
+            "wrap_geometry_min_azimuth_separation_deg": 55.0,
+            "wrap_geometry_counter_opposition_deg": 110.0,
+            "wrap_geometry_sky_min_elevation_deg": 55.0,
+            "wrap_geometry_candidate_count_per_role": 3
+          }
+        }
+      },
+      "mixamo": {
+        "character_fbx_path": "assets/mixamo/characters/Ch42_nonPBR.fbx",
+        "animation_fbx_path": "assets/mixamo/animations/moving/walk.fbx",
+        "debug": true
+      }
+    },
+    "carla_gt": {
+      "working_resolution": 720,
+      "frame_provider": {
+        "tool": "CarlaFrameProvider",
+        "settings": {
+          "path": "/home/juli/PycharmProjects/PEMOIN/carla_exports/20260409_032340_Town01_fps30_1280x720_fov90_sem1_inst1_n180",
+          "sampling_fps": 10.0
+        }
+      },
+      "runtime": {
+        "state_window": 24,
+        "degradation_policy": "OfflineDegradationPolicy",
+        "settings": {
+          "blender_scene": {
+            "enabled": true,
+            "pedestrian_trajectory_t": 0.65,
+            "pedestrian_forward_offset_m": 0.0,
+            "pedestrian_left_offset_m": -1.0,
+            "pedestrian_up_offset_m": 0.0,
+            "pedestrian_heading_deg": 180.0,
+            "cube_size": 0.1,
+            "collection_name": "TrajectoryDebug",
+            "road_gap": 0.1,
+            "global_plane_range_m": 15.0,
+            "global_plane_min_range_m": 3.0,
+            "global_plane_frame_window": 3,
+            "global_plane_max_points_per_frame": 4000,
+            "global_plane_confidence_threshold": 0.3,
+            "global_plane_trim_ratio": 0.2,
+            "local_support_radius_m": 2.5,
+            "local_support_frame_window": 3,
+            "local_support_min_points": 8,
+            "local_support_plane_size_m": 0.6,
+            "local_support_confidence_threshold": 0.0,
+            "local_support_max_radius_m": 7.5,
+            "local_support_radius_step_m": 0.75,
+            "local_support_snap_to_nearest_road": true,
+            "local_support_snap_radius_m": 1.0,
+            "local_support_temporal_hold_frames": 10,
+            "local_support_temporal_hold_seconds": 5.0,
+            "local_support_snap_max_vertical_delta_m": 0.2,
+            "local_support_snap_max_radius_ratio": 0.5,
+            "local_support_prefilter_vertical_window_m": 0.75,
+            "foot_contact_mode": "mixamo_phase",
+            "foot_contact_phase_offset": 0.0,
+            "foot_contact_left_stance_phase_ranges": [
+              [
+                0.28,
+                0.44
+              ]
+            ],
+            "foot_contact_right_stance_phase_ranges": [
+              [
+                0.79,
+                0.94
+              ]
+            ],
+            "foot_contact_gait_cycle_frames": null,
+            "foot_contact_auto_calibrate_phase_ranges": true,
+            "foot_contact_plane_mode": "project",
+            "foot_contact_min_plane_confidence_for_projection": 0.35,
+            "foot_contact_max_plane_dist_m": 0.08,
+            "foot_contact_max_speed_mps": 2.5,
+            "foot_contact_min_stance_frames": 2,
+            "foot_contact_min_swing_frames": 1,
+            "occlusion": {
+              "depth_source": "z_pass",
+              "default_front_margin_m": 0.005,
+              "relative_margin": 0.001,
+              "contact_plane_band_m": 0.06,
+              "contact_patch_radius_m": 0.6,
+              "contact_coplanar_tolerance_m": 0.1
+            },
+            "render": {
+              "resolution_scale": 1.5,
+              "raw_subject_exposure": {
+                "max_gain": 3.5
+              }
+            },
+            "lighting": {
+              "wrap_subject_fill": {
+                "global_strength_scale": 2.85,
+                "wrap_key_role_scale": 0.08,
+                "counter_wrap_role_scale": 0.07,
+                "sky_fill_role_scale": 0.04,
+                "raw_exposure_trim": 1.1
+              }
+            }
+          },
+          "validation_policy": {
+            "enabled": true,
+            "reference_sampling_fps": 10.0,
+            "minimum_sampling_fps": 1.0,
+            "threshold_curve": "sqrt_inverse_ratio",
+            "max_threshold_scale": 2.0,
+            "min_count_scale": 0.5,
+            "hard_fail_margin": 1.35,
+            "continue_on_soft_failure": true,
+            "emit_loud_warnings": true
+          },
+          "prefetch_frames": 48,
+          "geometry_validation": {
+            "enabled": true,
+            "max_frames": 300,
+            "max_depth_pixels": 5000,
+            "min_positive_depth_ratio": 0.97,
+            "min_front_ratio": 0.98,
+            "reprojection_error_px": 2.0,
+            "min_reprojection_ratio": 0.95,
+            "motion_min_distance_m": 0.02,
+            "min_view_motion_alignment": 0.2,
+            "min_view_motion_ratio": 0.6,
+            "rotation_orthonormal_tol": 0.001,
+            "det_tolerance": 0.05,
+            "last_row_tolerance": 0.001,
+            "camera_height_tolerance_m": 0.25,
+            "max_pose_jump_m": 50.0
+          },
+          "video_export": {
+            "enabled": true,
+            "codec": "mp4v",
+            "min_frames": 2
+          },
+          "depth_stabilization": {
+            "enabled": false,
+            "sigma_inv_depth": 0.04,
+            "use_dynamic_masks": true,
+            "device": "cuda"
+          },
+          "harmonisation": {
+            "enabled": true,
+            "conda_env": "harmonizer",
+            "pretrained_path": "tools/Harmonizer/pretrained/harmonizer.pth",
+            "overlay_dir": "artifacts/blender/overlayed_frames",
+            "occlusion_mask_dir": "artifacts/blender/occlusion_masks",
+            "output_dir": "artifacts/harmonisation/harmonized_overlays",
+            "mask_threshold": 0.05,
+            "min_crop_size_ratio": 1.0,
+            "max_frame_coverage_ratio": 1.0,
+            "containment_margin_px": 8,
+            "reject_when_actor_exceeds_crop": true,
+            "oversized_actor_behavior": "full_mask_affine_or_copy",
+            "full_frame_affine_min_mask_pixels": 512,
+            "eligibility": {
+              "min_visible_mask_pixels_for_model": 48,
+              "min_visible_bbox_short_side_px_for_model": 6,
+              "max_crop_coverage_ratio_for_model": 0.7,
+              "max_crop_coverage_mask_pixels_threshold": 128
+            },
+            "color_matching": {
+              "enabled": true,
+              "color_space": "lab",
+              "ring_inner_px": 10,
+              "ring_outer_px": 40,
+              "exclude_top_band": true,
+              "top_band_reference": "mask_top",
+              "top_band_px": 12,
+              "use_semantics_for_sky_filter": true,
+              "outlier_rejection": "robust_percentile",
+              "luminance_match": "mean_std",
+              "luminance_strength": 0.6,
+              "chroma_match": "mean_only",
+              "chroma_strength": 0.3,
+              "min_ring_pixels": 256,
+              "fallback_behavior": "skip_and_continue",
+              "write_diagnostics": true
+            },
+            "correction_clamps": {
+              "min_foreground_pixels_for_luminance_scale": 64,
+              "min_foreground_luminance_std_for_scale": 2.0,
+              "luminance_delta_clamp_small_mask": 18.0,
+              "luminance_delta_clamp_model": 28.0,
+              "luminance_std_ratio_clamp": [
+                0.75,
+                1.25
+              ],
+              "chroma_shift_clamp": 6.0
+            },
+            "temporal_smoothing": {
+              "enabled": true,
+              "mode": "parameter_ema",
+              "appearance_alpha": 0.85,
+              "tonal_alpha": 0.92,
+              "color_match_alpha": 0.85,
+              "warmup_mode": "seed_from_first_valid",
+              "reset_on_empty_mask": true,
+              "reset_on_copy_through": true,
+              "reset_on_harmonizer_failure": true,
+              "reset_on_crop_iou_below": 0.25,
+              "reset_on_mask_area_ratio_outside": [
+                0.5,
+                2.0
+              ],
+              "reset_on_centroid_jump_fraction": 0.25,
+              "fallback_mode": "affine_rgb_gain_bias",
+              "write_diagnostics": true
+            }
+          },
+          "geometry_consistency_validation": {
+            "enabled": true,
+            "pixel_stride": 8,
+            "min_overlap_points": 200,
+            "min_static_overlap_points": 200,
+            "exclude_dynamic_pixels": true,
+            "dynamic_mask_source": "auto",
+            "reprojection_error_px": 2.0,
+            "max_reprojection_rmse_px": 6.0,
+            "max_reprojection_p90_px": 4.0,
+            "max_reprojection_p95_px": 8.0,
+            "reprojection_catastrophic_mode": "robust_primary",
+            "min_inlier_ratio": 0.7,
+            "max_depth_scale_drift": 0.2,
+            "max_consecutive_catastrophic": 4,
+            "max_skipped_frames": 16,
+            "save_debug_artifacts_on_failure": true
+          },
+          "comparison_frame": {
+            "enabled": true,
+            "mode": "gt",
+            "ground_source": "road_plane",
+            "fail_if_missing_ground": true,
+            "min_ground_samples": 5,
+            "max_abs_ground_shift_m": 5.0,
+            "min_motion_steps": 3,
+            "min_total_xy_travel_m": 0.25,
+            "min_direction_concentration": 0.2,
+            "gt_max_height_rmse_m": 0.35,
+            "gt_max_height_abs_err_m": 0.75,
+            "gt_max_ground_drift_range_m": 0.5,
+            "estimated_min_median_camera_height_m": 0.5
+          }
+        }
+      },
+      "providers": {
+        "intrinsics": {
+          "tool": "CarlaIntrinsicsProvider",
+          "settings": {}
+        },
+        "depth": {
+          "tool": "CarlaDepthProvider",
+          "settings": {}
+        },
+        "camera_height": {
+          "tool": "CameraHeightProvider",
+          "settings": {
+            "height": 1.26
+          }
+        },
+        "trajectory": {
+          "tool": "CarlaTrajectoryProvider",
+          "settings": {}
+        },
+        "semantics": {
+          "tool": "CarlaSemanticsProvider",
+          "settings": {
+            "label_map_path": "/home/juli/Documents/Master_Thesis/Docpluscode/PEMOIN/carla_scripts/carla_label_map_dump.json"
+          }
+        },
+        "point_cloud_3d": {
+          "tool": "DensePointCloud3DProvider",
+          "settings": {
+            "pixel_stride": 2,
+            "voxel_size_m": 0.05,
+            "min_depth_m": 0.5,
+            "max_depth_m": 80.0,
+            "min_observations": 2,
+            "min_confidence": 0.3,
+            "min_total_points": 10000,
+            "max_points": 5000000,
+            "export_glb": true,
+            "glb_max_points": 250000,
+            "seed": 42,
+            "max_position_std_m": 0.2,
+            "max_depth_std_m": 1.5,
+            "min_view_diversity": 0.0
+          }
+        },
+        "geometry_fusion": {
+          "tool": "GeometryFusionProvider",
+          "settings": {
+            "road_conf_thresh": 0.6,
+            "roi_bottom_frac": 0.45,
+            "z_max_m": 30.0,
+            "ransac_iters": 2000,
+            "inlier_thresh_m": 0.06,
+            "irls_iters": 10,
+            "huber_delta_plane_m": 0.08,
+            "affine_mode": "scale_only",
+            "lambda_s": 5.0,
+            "lambda_b": 1.0,
+            "factor_graph_enabled": true,
+            "fg_env_name": "gtsam",
+            "fg_window_size": 21,
+            "quadratic_enabled": true
+          }
+        },
+        "lighting": {
+          "tool": "CarlaGTLightingProvider",
+          "settings": {
+            "require_scene_lights": true,
+            "synthetic_envmap_resolution": [
+              128,
+              256
+            ],
+            "sun_strength_scale": 3.0,
+            "ambient_strength_scale": 3.0,
+            "scene_light_strength_scale": 0.0135
+          }
+        }
+      },
+      "mixamo": {
+        "character_fbx_path": "assets/mixamo/characters/Ch42_nonPBR.fbx",
+        "animation_fbx_path": "assets/mixamo/animations/idle/waving.fbx",
+        "debug": true
+      }
+    },
+    "nuscenes_gt": {
+      "working_resolution": 900,
+      "frame_provider": {
+        "tool": "NuScenesFrameProvider",
+        "settings": {
+          "path": "/home/juli/Datasets/nuScenes-mini/v1.0-mini",
+          "version": "v1.0-mini",
+          "scene_index": 3,
+          "camera": "CAM_FRONT",
+          "sampling_mode": "all_camera_frames",
+          "sampling_fps": 30
+        }
+      },
+      "runtime": {
+        "state_window": 24,
+        "degradation_policy": "OfflineDegradationPolicy",
+        "settings": {
+          "prefetch_frames": 48,
+          "video_export": {
+            "enabled": true,
+            "codec": "mp4v",
+            "min_frames": 2
+          },
+          "depth_stabilization": {
+            "enabled": false,
+            "sigma_inv_depth": 0.04,
+            "use_dynamic_masks": true,
+            "device": "cuda"
+          },
+          "blender_scene": {
+            "enabled": true,
+            "cube_size": 0.1,
+            "collection_name": "TrajectoryDebug",
+            "road_gap": 0.1,
+            "global_plane_range_m": 15.0,
+            "global_plane_min_range_m": 3.0,
+            "global_plane_frame_window": 3,
+            "global_plane_max_points_per_frame": 4000,
+            "global_plane_confidence_threshold": 0.3,
+            "global_plane_trim_ratio": 0.2,
+            "local_support_radius_m": 2.5,
+            "local_support_frame_window": 3,
+            "local_support_min_points": 8,
+            "local_support_plane_size_m": 0.6,
+            "local_support_confidence_threshold": 0.0,
+            "local_support_max_radius_m": 7.5,
+            "local_support_radius_step_m": 0.75,
+            "local_support_snap_to_nearest_road": true,
+            "local_support_snap_radius_m": 1.0,
+            "local_support_temporal_hold_frames": 10,
+            "local_support_temporal_hold_seconds": 5.0,
+            "local_support_snap_max_vertical_delta_m": 0.2,
+            "local_support_snap_max_radius_ratio": 0.5,
+            "local_support_prefilter_vertical_window_m": 0.75,
+            "foot_contact_mode": "mixamo_phase",
+            "foot_contact_phase_offset": 0.0,
+            "foot_contact_left_stance_phase_ranges": [
+              [
+                0.28,
+                0.44
+              ]
+            ],
+            "foot_contact_right_stance_phase_ranges": [
+              [
+                0.79,
+                0.94
+              ]
+            ],
+            "foot_contact_gait_cycle_frames": null,
+            "foot_contact_auto_calibrate_phase_ranges": true,
+            "foot_contact_plane_mode": "project",
+            "foot_contact_min_plane_confidence_for_projection": 0.35,
+            "foot_contact_max_plane_dist_m": 0.08,
+            "foot_contact_max_speed_mps": 2.5,
+            "foot_contact_min_stance_frames": 2,
+            "foot_contact_min_swing_frames": 1,
+            "occlusion": {
+              "depth_source": "z_pass",
+              "default_front_margin_m": 0.005,
+              "relative_margin": 0.001,
+              "contact_plane_band_m": 0.06,
+              "contact_patch_radius_m": 0.6,
+              "contact_coplanar_tolerance_m": 0.1
+            },
+            "pedestrian_trajectory_t": 0.35,
+            "pedestrian_forward_offset_m": 0.0,
+            "pedestrian_left_offset_m": 4.0,
+            "pedestrian_up_offset_m": 0.0,
+            "pedestrian_heading_deg": 90.0,
+            "render": {
+              "resolution_scale": 1.25,
+              "raw_subject_exposure": {
+                "max_gain": 3.5
+              }
+            },
+            "lighting": {
+              "wrap_subject_fill": {
+                "global_strength_scale": 2.85,
+                "wrap_key_role_scale": 0.08,
+                "counter_wrap_role_scale": 0.07,
+                "sky_fill_role_scale": 0.04,
+                "raw_exposure_trim": 1.1
+              }
+            }
+          },
+          "harmonisation": {
+            "enabled": true,
+            "conda_env": "harmonizer",
+            "pretrained_path": "tools/Harmonizer/pretrained/harmonizer.pth",
+            "overlay_dir": "artifacts/blender/overlayed_frames",
+            "occlusion_mask_dir": "artifacts/blender/occlusion_masks",
+            "output_dir": "artifacts/harmonisation/harmonized_overlays",
+            "mask_threshold": 0.05,
+            "min_crop_size_ratio": 0.3,
+            "max_frame_coverage_ratio": 0.85,
+            "containment_margin_px": 8,
+            "reject_when_actor_exceeds_crop": true,
+            "oversized_actor_behavior": "full_mask_affine_or_copy",
+            "full_frame_affine_min_mask_pixels": 512,
+            "eligibility": {
+              "min_visible_mask_pixels_for_model": 48,
+              "min_visible_bbox_short_side_px_for_model": 6,
+              "max_crop_coverage_ratio_for_model": 0.7,
+              "max_crop_coverage_mask_pixels_threshold": 128
+            },
+            "color_matching": {
+              "enabled": true,
+              "color_space": "lab",
+              "ring_inner_px": 10,
+              "ring_outer_px": 40,
+              "exclude_top_band": true,
+              "top_band_reference": "mask_top",
+              "top_band_px": 12,
+              "use_semantics_for_sky_filter": true,
+              "outlier_rejection": "robust_percentile",
+              "luminance_match": "mean_std",
+              "luminance_strength": 0.6,
+              "chroma_match": "mean_only",
+              "chroma_strength": 0.3,
+              "min_ring_pixels": 256,
+              "fallback_behavior": "skip_and_continue",
+              "write_diagnostics": true
+            },
+            "correction_clamps": {
+              "min_foreground_pixels_for_luminance_scale": 64,
+              "min_foreground_luminance_std_for_scale": 2.0,
+              "luminance_delta_clamp_small_mask": 18.0,
+              "luminance_delta_clamp_model": 28.0,
+              "luminance_std_ratio_clamp": [
+                0.75,
+                1.25
+              ],
+              "chroma_shift_clamp": 6.0
+            },
+            "temporal_smoothing": {
+              "enabled": true,
+              "mode": "parameter_ema",
+              "appearance_alpha": 0.85,
+              "tonal_alpha": 0.92,
+              "color_match_alpha": 0.85,
+              "warmup_mode": "seed_from_first_valid",
+              "reset_on_empty_mask": true,
+              "reset_on_copy_through": true,
+              "reset_on_harmonizer_failure": true,
+              "reset_on_crop_iou_below": 0.25,
+              "reset_on_mask_area_ratio_outside": [
+                0.5,
+                2.0
+              ],
+              "reset_on_centroid_jump_fraction": 0.25,
+              "fallback_mode": "affine_rgb_gain_bias",
+              "write_diagnostics": true
+            }
+          },
+          "comparison_frame": {
+            "enabled": true,
+            "mode": "gt",
+            "ground_source": "road_plane",
+            "fail_if_missing_ground": true,
+            "min_ground_samples": 5,
+            "max_abs_ground_shift_m": 5.0,
+            "min_motion_steps": 3,
+            "min_total_xy_travel_m": 0.25,
+            "min_direction_concentration": 0.2,
+            "gt_max_height_rmse_m": 0.35,
+            "gt_max_height_abs_err_m": 0.75,
+            "gt_max_ground_drift_range_m": 0.5,
+            "estimated_min_median_camera_height_m": 0.5
+          },
+          "validation_policy": {
+            "enabled": true,
+            "reference_sampling_fps": 10.0,
+            "minimum_sampling_fps": 1.0,
+            "threshold_curve": "sqrt_inverse_ratio",
+            "max_threshold_scale": 2.0,
+            "min_count_scale": 0.5,
+            "hard_fail_margin": 1.35,
+            "continue_on_soft_failure": true,
+            "emit_loud_warnings": true
+          },
+          "geometry_consistency_validation": {
+            "enabled": true,
+            "pixel_stride": 8,
+            "min_overlap_points": 200,
+            "min_static_overlap_points": 200,
+            "exclude_dynamic_pixels": true,
+            "dynamic_mask_source": "auto",
+            "reprojection_error_px": 2.0,
+            "max_reprojection_rmse_px": 6.0,
+            "max_reprojection_p90_px": 4.0,
+            "max_reprojection_p95_px": 8.0,
+            "reprojection_catastrophic_mode": "robust_primary",
+            "min_inlier_ratio": 0.7,
+            "max_depth_scale_drift": 0.2,
+            "max_consecutive_catastrophic": 4,
+            "max_skipped_frames": 16,
+            "save_debug_artifacts_on_failure": true
+          }
+        }
+      },
+      "providers": {
+        "intrinsics": {
+          "tool": "NuScenesIntrinsicsProvider",
+          "settings": {}
+        },
+        "depth": {
+          "tool": "UniDepthDepthProvider",
+          "settings": {
+            "adapter": {
+              "model_name": "lpiccinelli/unidepth-v2-vitl14",
+              "mamba_env": "unidepth-cu121",
+              "precision_mode": "amp_fp16",
+              "batch_size": 1,
+              "save_confidence": true,
+              "channels_last": true,
+              "use_gt_intrinsics": true
+            }
+          }
+        },
+        "trajectory": {
+          "tool": "NuScenesTrajectoryProvider",
+          "settings": {}
+        },
+        "camera_height": {
+          "tool": "NuScenesCameraHeightProvider",
+          "settings": {}
+        },
+        "semantics": {
+          "tool": "CAVISSemanticsProvider",
+          "settings": {
+            "config_file": "configs/VIPSeg/CAVIS_Offline_R50.yaml",
+            "weights": "pretrained/CAVIS_offline_VIPSeg_R50_45.3.pth",
+            "conda_env": "cavis",
+            "windows_size": 300,
+            "object_mask_threshold": 0.8,
+            "overlap_threshold": 0.8,
+            "device": "cuda:0"
+          }
+        },
+        "point_cloud_3d": {
+          "tool": "DensePointCloud3DProvider",
+          "settings": {
+            "pixel_stride": 2,
+            "voxel_size_m": 0.05,
+            "min_depth_m": 0.5,
+            "max_depth_m": 80.0,
+            "min_observations": 2,
+            "min_confidence": 0.3,
+            "min_total_points": 10000,
+            "max_points": 5000000,
+            "export_glb": true,
+            "glb_max_points": 250000,
+            "seed": 42,
+            "max_position_std_m": 0.2,
+            "max_depth_std_m": 1.5,
+            "min_view_diversity": 0.0
+          }
+        },
+        "geometry_fusion": {
+          "tool": "GeometryFusionProvider",
+          "settings": {
+            "road_conf_thresh": 0.6,
+            "roi_bottom_frac": 0.45,
+            "z_max_m": 30.0,
+            "ransac_iters": 2000,
+            "inlier_thresh_m": 0.06,
+            "irls_iters": 10,
+            "huber_delta_plane_m": 0.08,
+            "affine_mode": "scale_only",
+            "lambda_s": 5.0,
+            "lambda_b": 1.0,
+            "factor_graph_enabled": true,
+            "fg_env_name": "gtsam",
+            "fg_window_size": 21,
+            "quadratic_enabled": true
+          }
+        },
+        "lighting": {
+          "tool": "DiffusionLightTurboLightingProvider",
+          "settings": {
+            "repo_root": "tools/DiffusionLight-Turbo",
+            "conda_env": "diffusionlight-turbo",
+            "input_size": 1024,
+            "num_keyframes": 3,
+            "algorithm": "normal",
+            "offload": true,
+            "no_controlnet": true,
+            "outlier_angle_deg": 30.0,
+            "sun_sigma_deg": 6.0,
+            "diffuse_demote_enabled": true,
+            "diffuse_demote_aggressiveness": "aggressive",
+            "max_direct_to_fill_ratio_for_diffuse": 2.0,
+            "fill_heavy_min_fill_count": 2,
+            "fill_heavy_direct_scale": 0.2,
+            "fill_heavy_dark_side_target_ratio": 0.38,
+            "fill_heavy_transport_gain": 1.35,
+            "wrap_geometry_min_azimuth_separation_deg": 55.0,
+            "wrap_geometry_counter_opposition_deg": 110.0,
+            "wrap_geometry_sky_min_elevation_deg": 55.0,
+            "wrap_geometry_candidate_count_per_role": 3
+          }
+        }
+      },
+      "mixamo": {
+        "character_fbx_path": "assets/mixamo/characters/Ch42_nonPBR.fbx",
+        "animation_fbx_path": "assets/mixamo/animations/moving/walk.fbx",
+        "debug": true
+      }
+    },
+    "nuscenes_dpvo": {
+      "working_resolution": 720,
+      "frame_provider": {
+        "tool": "NuScenesFrameProvider",
+        "settings": {
+          "path": "/home/juli/Datasets/nuScenes-mini/v1.0-mini",
+          "version": "v1.0-mini",
+          "scene_index": 6,
+          "camera": "CAM_FRONT",
+          "sampling_mode": "all_camera_frames",
+          "sampling_fps": 12.0
+        }
+      },
+      "runtime": {
+        "state_window": 24,
+        "degradation_policy": "OfflineDegradationPolicy",
+        "settings": {
+          "blender_scene": {
+            "enabled": true,
+            "pedestrian_trajectory_t": 0.6,
+            "pedestrian_forward_offset_m": 0.0,
+            "pedestrian_left_offset_m": -0.5,
+            "pedestrian_up_offset_m": 0.0,
+            "pedestrian_heading_deg": 90.0,
+            "cube_size": 0.1,
+            "collection_name": "TrajectoryDebug",
+            "road_gap": 0.1,
+            "global_plane_range_m": 15.0,
+            "global_plane_min_range_m": 3.0,
+            "global_plane_frame_window": 3,
+            "global_plane_max_points_per_frame": 4000,
+            "global_plane_confidence_threshold": 0.3,
+            "global_plane_trim_ratio": 0.2,
+            "local_support_radius_m": 2.5,
+            "local_support_frame_window": 3,
+            "local_support_min_points": 8,
+            "local_support_plane_size_m": 0.6,
+            "local_support_confidence_threshold": 0.0,
+            "local_support_max_radius_m": 7.5,
+            "local_support_radius_step_m": 0.75,
+            "local_support_snap_to_nearest_road": true,
+            "local_support_snap_radius_m": 1.0,
+            "local_support_temporal_hold_frames": 10,
+            "local_support_temporal_hold_seconds": 5.0,
+            "local_support_snap_max_vertical_delta_m": 0.2,
+            "local_support_snap_max_radius_ratio": 0.5,
+            "local_support_prefilter_vertical_window_m": 0.75,
+            "foot_contact_mode": "mixamo_phase",
+            "foot_contact_phase_offset": 0.0,
+            "foot_contact_left_stance_phase_ranges": [
+              [
+                0.28,
+                0.44
+              ]
+            ],
+            "foot_contact_right_stance_phase_ranges": [
+              [
+                0.79,
+                0.94
+              ]
+            ],
+            "foot_contact_gait_cycle_frames": null,
+            "foot_contact_auto_calibrate_phase_ranges": true,
+            "foot_contact_plane_mode": "project",
+            "foot_contact_min_plane_confidence_for_projection": 0.35,
+            "foot_contact_max_plane_dist_m": 0.08,
+            "foot_contact_max_speed_mps": 2.5,
+            "foot_contact_min_stance_frames": 2,
+            "foot_contact_min_swing_frames": 1,
+            "occlusion": {
+              "depth_source": "z_pass",
+              "default_front_margin_m": 0.005,
+              "relative_margin": 0.001,
+              "contact_plane_band_m": 0.06,
+              "contact_patch_radius_m": 0.6,
+              "contact_coplanar_tolerance_m": 0.1
+            },
+            "render": {
+              "resolution_scale": 1.5,
+              "raw_subject_exposure": {
+                "max_gain": 3.5
+              }
+            },
+            "lighting": {
+              "wrap_subject_fill": {
+                "global_strength_scale": 2.85,
+                "wrap_key_role_scale": 0.08,
+                "counter_wrap_role_scale": 0.07,
+                "sky_fill_role_scale": 0.04,
+                "raw_exposure_trim": 1.1
+              }
+            }
+          },
+          "validation_policy": {
+            "enabled": true,
+            "reference_sampling_fps": 10.0,
+            "minimum_sampling_fps": 1.0,
+            "threshold_curve": "sqrt_inverse_ratio",
+            "max_threshold_scale": 2.0,
+            "min_count_scale": 0.5,
+            "hard_fail_margin": 1.35,
+            "continue_on_soft_failure": true,
+            "emit_loud_warnings": true
+          },
+          "prefetch_frames": 48,
+          "geometry_validation": {
+            "enabled": true,
+            "max_frames": 300,
+            "max_depth_pixels": 5000,
+            "min_positive_depth_ratio": 0.97,
+            "min_front_ratio": 0.98,
+            "reprojection_error_px": 2.0,
+            "min_reprojection_ratio": 0.95,
+            "motion_min_distance_m": 0.02,
+            "min_view_motion_alignment": 0.2,
+            "min_view_motion_ratio": 0.6,
+            "rotation_orthonormal_tol": 0.001,
+            "det_tolerance": 0.05,
+            "last_row_tolerance": 0.001,
+            "camera_height_tolerance_m": 0.25,
+            "max_pose_jump_m": 50.0
+          },
+          "video_export": {
+            "enabled": true,
+            "codec": "mp4v",
+            "min_frames": 2
+          },
+          "depth_stabilization": {
+            "enabled": false,
+            "sigma_inv_depth": 0.04,
+            "use_dynamic_masks": true,
+            "device": "cuda"
+          },
+          "harmonisation": {
+            "enabled": true,
+            "conda_env": "harmonizer",
+            "pretrained_path": "tools/Harmonizer/pretrained/harmonizer.pth",
+            "overlay_dir": "artifacts/blender/overlayed_frames",
+            "occlusion_mask_dir": "artifacts/blender/occlusion_masks",
+            "output_dir": "artifacts/harmonisation/harmonized_overlays",
+            "mask_threshold": 0.05,
+            "min_crop_size_ratio": 0.3,
+            "max_frame_coverage_ratio": 0.85,
+            "containment_margin_px": 8,
+            "reject_when_actor_exceeds_crop": true,
+            "oversized_actor_behavior": "full_mask_affine_or_copy",
+            "full_frame_affine_min_mask_pixels": 512,
+            "eligibility": {
+              "min_visible_mask_pixels_for_model": 48,
+              "min_visible_bbox_short_side_px_for_model": 6,
+              "max_crop_coverage_ratio_for_model": 0.7,
+              "max_crop_coverage_mask_pixels_threshold": 128
+            },
+            "color_matching": {
+              "enabled": true,
+              "color_space": "lab",
+              "ring_inner_px": 10,
+              "ring_outer_px": 40,
+              "exclude_top_band": true,
+              "top_band_reference": "mask_top",
+              "top_band_px": 12,
+              "use_semantics_for_sky_filter": true,
+              "outlier_rejection": "robust_percentile",
+              "luminance_match": "mean_std",
+              "luminance_strength": 0.6,
+              "chroma_match": "mean_only",
+              "chroma_strength": 0.3,
+              "min_ring_pixels": 256,
+              "fallback_behavior": "skip_and_continue",
+              "write_diagnostics": true
+            },
+            "correction_clamps": {
+              "min_foreground_pixels_for_luminance_scale": 64,
+              "min_foreground_luminance_std_for_scale": 2.0,
+              "luminance_delta_clamp_small_mask": 18.0,
+              "luminance_delta_clamp_model": 28.0,
+              "luminance_std_ratio_clamp": [
+                0.75,
+                1.25
+              ],
+              "chroma_shift_clamp": 6.0
+            },
+            "temporal_smoothing": {
+              "enabled": true,
+              "mode": "parameter_ema",
+              "appearance_alpha": 0.85,
+              "tonal_alpha": 0.92,
+              "color_match_alpha": 0.85,
+              "warmup_mode": "seed_from_first_valid",
+              "reset_on_empty_mask": true,
+              "reset_on_copy_through": true,
+              "reset_on_harmonizer_failure": true,
+              "reset_on_crop_iou_below": 0.25,
+              "reset_on_mask_area_ratio_outside": [
+                0.5,
+                2.0
+              ],
+              "reset_on_centroid_jump_fraction": 0.25,
+              "fallback_mode": "affine_rgb_gain_bias",
+              "write_diagnostics": true
+            }
+          },
+          "geometry_consistency_validation": {
+            "enabled": true,
+            "pixel_stride": 8,
+            "min_overlap_points": 200,
+            "min_static_overlap_points": 200,
+            "exclude_dynamic_pixels": true,
+            "dynamic_mask_source": "auto",
+            "reprojection_error_px": 2.0,
+            "max_reprojection_rmse_px": 6.0,
+            "max_reprojection_p90_px": 4.0,
+            "max_reprojection_p95_px": 8.0,
+            "reprojection_catastrophic_mode": "robust_primary",
+            "min_inlier_ratio": 0.7,
+            "max_depth_scale_drift": 0.2,
+            "max_consecutive_catastrophic": 4,
+            "max_skipped_frames": 16,
+            "save_debug_artifacts_on_failure": true
+          },
+          "comparison_frame": {
+            "enabled": true,
+            "mode": "estimated",
+            "ground_source": "road_plane",
+            "fail_if_missing_ground": true,
+            "min_ground_samples": 5,
+            "max_abs_ground_shift_m": 5.0,
+            "min_motion_steps": 3,
+            "min_total_xy_travel_m": 0.25,
+            "min_direction_concentration": 0.2,
+            "gt_max_height_rmse_m": 0.35,
+            "gt_max_height_abs_err_m": 0.75,
+            "gt_max_ground_drift_range_m": 0.5,
+            "estimated_min_median_camera_height_m": 0.5
+          }
+        }
+      },
+      "providers": {
+        "intrinsics": {
+          "tool": "NuScenesIntrinsicsProvider",
+          "settings": {}
+        },
+        "depth": {
+          "tool": "UniDepthDepthProvider",
+          "settings": {
+            "adapter": {
+              "model_name": "lpiccinelli/unidepth-v2-vitl14",
+              "mamba_env": "unidepth-cu121",
+              "precision_mode": "amp_fp16",
+              "batch_size": 1,
+              "save_confidence": true,
+              "channels_last": true,
+              "use_gt_intrinsics": true
+            }
+          }
+        },
+        "trajectory": {
+          "tool": "DPVOTrajectoryProvider",
+          "settings": {
+            "adapter": {
+              "stride": 1,
+              "precision_mode": "amp_fp16",
+              "allocator_mode": "native",
+              "memory_preset": "low_vram"
+            }
+          }
+        },
+        "camera_height": {
+          "tool": "NuScenesCameraHeightProvider",
+          "settings": {}
+        },
+        "semantics": {
+          "tool": "CAVISSemanticsProvider",
+          "settings": {
+            "config_file": "configs/VIPSeg/CAVIS_Offline_R50.yaml",
+            "weights": "pretrained/CAVIS_offline_VIPSeg_R50_45.3.pth",
+            "conda_env": "cavis",
+            "windows_size": 300,
+            "object_mask_threshold": 0.3,
+            "overlap_threshold": 0.3,
+            "device": "cuda:0"
+          }
+        },
+        "point_cloud_3d": {
+          "tool": "DensePointCloud3DProvider",
+          "settings": {
+            "pixel_stride": 2,
+            "voxel_size_m": 0.05,
+            "min_depth_m": 0.5,
+            "max_depth_m": 80.0,
+            "min_observations": 2,
+            "min_confidence": 0.3,
+            "min_total_points": 10000,
+            "max_points": 5000000,
+            "export_glb": true,
+            "glb_max_points": 250000,
+            "seed": 42,
+            "max_position_std_m": 0.2,
+            "max_depth_std_m": 1.5,
+            "min_view_diversity": 0.0
+          }
+        },
+        "geometry_fusion": {
+          "tool": "GeometryFusionProvider",
+          "settings": {
+            "road_conf_thresh": 0.6,
+            "roi_bottom_frac": 0.45,
+            "z_max_m": 30.0,
+            "ransac_iters": 2000,
+            "inlier_thresh_m": 0.06,
+            "irls_iters": 10,
+            "huber_delta_plane_m": 0.08,
+            "affine_mode": "scale_only",
+            "lambda_s": 5.0,
+            "lambda_b": 1.0,
+            "factor_graph_enabled": true,
+            "fg_env_name": "gtsam",
+            "fg_window_size": 21,
+            "quadratic_enabled": true
+          }
+        },
+        "lighting": {
+          "tool": "DiffusionLightTurboLightingProvider",
+          "settings": {
+            "repo_root": "tools/DiffusionLight-Turbo",
+            "conda_env": "diffusionlight-turbo",
+            "input_size": 1024,
+            "num_keyframes": 3,
+            "algorithm": "normal",
+            "offload": true,
+            "no_controlnet": true,
+            "outlier_angle_deg": 30.0,
+            "sun_sigma_deg": 6.0,
+            "diffuse_demote_enabled": true,
+            "diffuse_demote_aggressiveness": "aggressive",
+            "max_direct_to_fill_ratio_for_diffuse": 2.0,
+            "fill_heavy_min_fill_count": 2,
+            "fill_heavy_direct_scale": 0.2,
+            "fill_heavy_dark_side_target_ratio": 0.38,
+            "fill_heavy_transport_gain": 1.35,
+            "wrap_geometry_min_azimuth_separation_deg": 55.0,
+            "wrap_geometry_counter_opposition_deg": 110.0,
+            "wrap_geometry_sky_min_elevation_deg": 55.0,
+            "wrap_geometry_candidate_count_per_role": 3
+          }
+        }
+      },
+      "mixamo": {
+        "character_fbx_path": "assets/mixamo/characters/Ch42_nonPBR.fbx",
+        "animation_fbx_path": "assets/mixamo/animations/moving/walk.fbx",
+        "debug": true
+      }
+    }
+  }
+}
